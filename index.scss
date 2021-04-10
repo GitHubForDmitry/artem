@@ -12,6 +12,7 @@ $violet: #21212b;
     margin: 0 auto;
     max-width: 1040px;
     width: 100%;
+    padding: 10px;
 }
 
 .card {
@@ -22,7 +23,8 @@ $violet: #21212b;
 
     &__flex {
         display: flex;
-        padding: 100px 2% 10px;
+        flex-direction: column;
+        padding-top: 100px;
     }
 
     &__wrapper {
@@ -30,7 +32,7 @@ $violet: #21212b;
         bottom: 100px;
         left: 0;
         z-index: 1;
-
+        background: rgba(255, 255, 255, 0.2);
 
         &--title {
             font-size: 3em;
@@ -46,26 +48,8 @@ $violet: #21212b;
         }
     }
 
-    &__left {
-        flex-basis: 60%;
-        padding-right: 5px;
-
-        #{$this}__text {
-            display: flex;
-            align-items: flex-start;
-        }
-    }
-
-    &__right {
-        flex-basis: 40%;
-    }
-
     &__photo {
         position: relative;
-
-        & + #{$this}__text {
-            padding-top: 80px;
-        }
 
         &.is-dark::after {
             content: '';
@@ -86,8 +70,23 @@ $violet: #21212b;
             width: 100%;
             height: 40vh;
             position: relative;
-            border-bottom-left-radius: 30px;
-            border-bottom-right-radius: 30px;
+            border-radius: 30px;
+
+            &.is-first {
+                border-radius: 0 0 30px 30px !important;
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            border-radius: 30px;
         }
     }
 
@@ -106,7 +105,7 @@ $violet: #21212b;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: calc(100% - 75px);
+        bottom: 100%;
         color: #333;
         margin-bottom: 15px;
         font-family: Roboto, sans-serif;
@@ -129,6 +128,10 @@ $violet: #21212b;
             top: 70px;
             left: 0;
         }
+
+        & + #{$this}__text {
+            padding-top: 100px;
+        }
     }
 
 
@@ -138,20 +141,28 @@ $violet: #21212b;
         font-size: 2em;
         padding: 20px;
 
+        &--flex {
+            display: flex;
+            align-items: flex-start;
+        }
         span {
             font-weight: 700;
             color: $main;
         }
+
+        & > div {
+            font-size: 1.2em;
+        }
     }
 
     &__number {
-        margin-right: 15px;
+        margin-right: 25px;
         font-weight: 600;
-        font-size: 2em;
-        -webkit-text-stroke: 2px $main;
+        font-size: 1.5em !important;
+        -webkit-text-stroke: 3px $main;
         color: #fff;
-        line-height: 48px;
-        font-family: Montserrat, Arial, serif;
+        font-family: Roboto, sans-serif;
+
     }
 
     &__button {

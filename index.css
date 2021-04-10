@@ -9,6 +9,7 @@
   margin: 0 auto;
   max-width: 1040px;
   width: 100%;
+  padding: 10px;
 }
 
 .card {
@@ -17,13 +18,15 @@
 }
 .card__flex {
   display: flex;
-  padding: 100px 2% 10px;
+  flex-direction: column;
+  padding-top: 100px;
 }
 .card__wrapper {
   position: absolute;
   bottom: 100px;
   left: 0;
   z-index: 1;
+  background: rgba(255, 255, 255, 0.2);
 }
 .card__wrapper--title {
   font-size: 3em;
@@ -36,22 +39,8 @@
   text-align: center;
   color: #f7f9f9;
 }
-.card__left {
-  flex-basis: 60%;
-  padding-right: 5px;
-}
-.card__left .card__text {
-  display: flex;
-  align-items: flex-start;
-}
-.card__right {
-  flex-basis: 40%;
-}
 .card__photo {
   position: relative;
-}
-.card__photo + .card__text {
-  padding-top: 80px;
 }
 .card__photo.is-dark::after {
   content: "";
@@ -71,8 +60,21 @@
   width: 100%;
   height: 40vh;
   position: relative;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px;
+}
+.card__photo img.is-first {
+  border-radius: 0 0 30px 30px !important;
+}
+.card__photo::after {
+  content: "";
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 30px;
 }
 .card__photo-small {
   width: 100%;
@@ -87,7 +89,7 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: calc(100% - 75px);
+  bottom: 100%;
   color: #333;
   margin-bottom: 15px;
   font-family: Roboto, sans-serif;
@@ -110,24 +112,33 @@
   top: 70px;
   left: 0;
 }
+.card__title + .card__text {
+  padding-top: 100px;
+}
 .card__text {
   color: #333;
   font-family: Roboto, sans-serif;
   font-size: 2em;
   padding: 20px;
 }
+.card__text--flex {
+  display: flex;
+  align-items: flex-start;
+}
 .card__text span {
   font-weight: 700;
   color: #29d67a;
 }
+.card__text > div {
+  font-size: 1.2em;
+}
 .card__number {
-  margin-right: 15px;
+  margin-right: 25px;
   font-weight: 600;
-  font-size: 2em;
-  -webkit-text-stroke: 2px #29d67a;
+  font-size: 1.5em !important;
+  -webkit-text-stroke: 3px #29d67a;
   color: #fff;
-  line-height: 48px;
-  font-family: Montserrat, Arial, serif;
+  font-family: Roboto, sans-serif;
 }
 .card__button {
   width: 100%;
